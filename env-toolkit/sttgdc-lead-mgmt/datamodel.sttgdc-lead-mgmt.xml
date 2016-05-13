@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<itop_design xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0">
+  <constants>
+  </constants>
+  <classes>
+    <class id="Lead" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <comment><![CDATA[/**
+ * Persistent classes for a CMDB
+ *
+ * @copyright   Copyright (C) 2010-2012 Combodo SARL
+ * @license     http://opensource.org/licenses/AGPL-3.0
+ */]]></comment>
+        <category>bizmodel,searchable,structure</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>sttgdc_lead</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon>images/slt.png</icon>
+        <reconciliation>
+          <attributes>
+            <attribute id="name"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <fields>
+        <field id="name" xsi:type="AttributeString">
+          <sql>name</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+       <field id="contacts_list" xsi:type="AttributeLinkedSetIndirect">
+          <linked_class>sttgdc_lnkLeadToContact</linked_class>
+          <ext_key_to_me>lead_id</ext_key_to_me>
+          <count_min>0</count_min>
+          <count_max>0</count_max>
+          <ext_key_to_remote>contact_id</ext_key_to_remote>
+          <duplicates/>
+        </field>
+        <field id="org_id" xsi:type="AttributeExternalKey">
+          <sql>org_id</sql>
+          <target_class>Organization</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="sector_type" xsi:type="AttributeString">
+          <sql>sector_type</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="partner_id" xsi:type="AttributeExternalKey">
+          <sql>partner_id</sql>
+          <target_class>Organization</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="site" xsi:type="AttributeEnum">
+          <values>
+            <value id="defu">defu</value>
+            <value id="media_hub">media_hub</value>
+          </values>
+          <sql>site</sql>
+          <default_value>defu</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="comission_date" xsi:type="AttributeDateTime">
+          <always_load_in_tables>true</always_load_in_tables>
+          <sql>comission_date</sql>
+          <default_value/>
+          <is_null_allowed>true</is_null_allowed>
+        </field>
+        <field id="unit_no" xsi:type="AttributeString">
+          <sql>unit_no</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+         <field id="colo_type" xsi:type="AttributeEnum">
+          <values>
+            <value id="Suite">Suite</value>
+            <value id="Cage">Cage</value>
+            <value id="Open-Colo">Open-Colo</value>
+            <value id="Rack">Rack</value>
+            <value id="Others">Others</value>
+          </values>
+          <sql>colo_type</sql>
+          <default_value>Suite</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="m2" xsi:type="AttributeInteger">
+          <sql>m2</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="one_time_charge" xsi:type="AttributeString">
+          <sql>one_time_charge</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="annual_revenue" xsi:type="AttributeInteger">
+          <sql>annual_revenue</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="mrr" xsi:type="AttributeInteger">
+          <sql>mrr</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="kwpa" xsi:type="AttributeInteger">
+          <sql>kwpa</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="contract_duration" xsi:type="AttributeInteger">
+          <sql>contract_duration</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+         <field id="total_contract_value" xsi:type="AttributeInteger">
+          <sql>total_contract_value</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+        <field id="probability" xsi:type="AttributeEnum">
+          <values>
+            <value id="5">5</value>
+            <value id="25">25</value>
+            <value id="50">50</value>
+            <value id="75">75</value>
+            <value id="100">100</value>
+          </values>
+          <sql>probability</sql>
+          <default_value>5</default_value>
+          <is_null_allowed>false</is_null_allowed>
+          <display_style>list</display_style>
+        </field>
+        <field id="comments" xsi:type="AttributeText">
+          <sql>comments</sql>
+          <default_value/>
+          <is_null_allowed>false</is_null_allowed>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="col:col1">
+              <rank>10</rank>
+              <items>
+                <item id="contacts_list">
+                  <rank>5</rank>
+                </item>
+                <item id="name">
+                  <rank>10</rank>
+                  <mandatory/>
+                </item>
+                <item id="org_id">
+                  <rank>20</rank>
+                  <mandatory/>
+                </item>
+                 <item id="sector_type">
+                  <rank>30</rank>
+                  <!-- <mandatory/> -->
+                </item>
+                 <item id="site">
+                  <rank>40</rank>
+                </item>
+                <item id="partner_id">
+                  <rank>40</rank>
+                </item>
+
+                <item id="comission_date">
+                  <rank>60</rank>
+                </item>
+                <item id="unit_no">
+                  <rank>70</rank>
+                </item>
+                 <item id="colo_type">
+                  <rank>80</rank>
+                </item>
+                <item id="m2">
+                  <rank>90</rank>
+                </item>
+                <item id="one_time_charge">
+                  <rank>100</rank>
+                </item>
+              </items>
+            </item>
+            <item id="col:col2">
+              <rank>10</rank>
+              <items>
+                <item id="annual_revenue">
+                  <rank>10</rank>
+                  <mandatory/>
+                </item>
+                <item id="mrr">
+                  <rank>20</rank>
+                  <mandatory/>
+                </item>
+                <item id="kwpa">
+                  <rank>30</rank>
+                  <mandatory/>
+                </item>
+                 <item id="contract_duration">
+                  <rank>40</rank>
+                  <!-- <mandatory/> -->
+                </item>
+                 <item id="total_contract_value">
+                  <rank>50</rank>
+                </item>
+
+                <item id="probability">
+                  <rank>60</rank>
+                </item>
+                <item id="comments">
+                  <rank>70</rank>
+                </item>
+              </items>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="org_id">
+              <rank>20</rank>
+            </item>
+            <item id="partner_id">
+              <rank>30</rank>
+            </item>
+            <item id="site">
+              <rank>40</rank>
+            </item>
+            <item id="sector_type">
+              <rank>50</rank>
+            </item>
+            <item id="probability">
+              <rank>60</rank>
+            </item>
+            <item id="colo_type">
+              <rank>70</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="name">
+              <rank>10</rank>
+            </item>
+            <item id="colo_type">
+              <rank>20</rank>
+            </item>
+            <item id="sector_type">
+              <rank>30</rank>
+            </item>
+             <item id="probability">
+              <rank>40</rank>
+            </item>
+            <item id="site">
+              <rank>50</rank>
+            </item>
+            <item id="total_contract_value">
+              <rank>60</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+    <class id="sttgdc_lnkLeadToContact" _delta="define">
+      <parent>cmdbAbstractObject</parent>
+      <properties>
+        <is_link>1</is_link>
+        <category>bizmodel</category>
+        <abstract>false</abstract>
+        <key_type>autoincrement</key_type>
+        <db_table>sttgdc_lnkLeadToContact</db_table>
+        <db_key_field>id</db_key_field>
+        <db_final_class_field/>
+        <naming>
+          <attributes>
+            <attribute id="lead_id"/>
+            <attribute id="contact_id"/>
+          </attributes>
+        </naming>
+        <display_template/>
+        <icon/>
+        <reconciliation>
+          <attributes>
+            <attribute id="lead_id"/>
+            <attribute id="contact_id"/>
+          </attributes>
+        </reconciliation>
+      </properties>
+      <fields>
+        <field id="lead_id" xsi:type="AttributeExternalKey">
+          <sql>lead_id</sql>
+          <target_class>Lead</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="lead_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>lead_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="contact_id" xsi:type="AttributeExternalKey">
+          <sql>contact_id</sql>
+          <target_class>Contact</target_class>
+          <is_null_allowed>false</is_null_allowed>
+          <on_target_delete>DEL_AUTO</on_target_delete>
+        </field>
+        <field id="contact_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>contact_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+        <field id="role_id" xsi:type="AttributeExternalKey">
+          <sql>role_id</sql>
+          <target_class>ContactType</target_class>
+          <is_null_allowed>true</is_null_allowed>
+          <on_target_delete>DEL_MANUAL</on_target_delete>
+        </field>
+        <field id="role_name" xsi:type="AttributeExternalField">
+          <extkey_attcode>role_id</extkey_attcode>
+          <target_attcode>name</target_attcode>
+        </field>
+      </fields>
+      <methods/>
+      <presentation>
+        <details>
+          <items>
+            <item id="lead_id">
+              <rank>10</rank>
+            </item>
+            <item id="contact_id">
+              <rank>20</rank>
+            </item>
+            <item id="role_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </details>
+        <search>
+          <items>
+            <item id="lead_id">
+              <rank>10</rank>
+            </item>
+            <item id="contact_id">
+              <rank>20</rank>
+            </item>
+            <item id="role_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </search>
+        <list>
+          <items>
+            <item id="lead_id">
+              <rank>10</rank>
+            </item>
+            <item id="contact_id">
+              <rank>20</rank>
+            </item>
+            <item id="role_id">
+              <rank>30</rank>
+            </item>
+          </items>
+        </list>
+      </presentation>
+    </class>
+  </classes>
+  <menus>
+    <menu id="Lead" xsi:type="OQLMenuNode" _delta="define">
+      <rank>90</rank>
+       <parent>ServiceManagement</parent>
+      <oql>SELECT Lead</oql>
+      <do_search>1</do_search>
+    </menu>
+  </menus>
+  <user_rights>
+    <groups>
+    </groups>
+    <profiles>
+    </profiles>
+  </user_rights>
+</itop_design>
