@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','SessionController@index');
+Route::get('/dashboard','SessionController@index');
+Route::resource('/test_data','TestController');
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });

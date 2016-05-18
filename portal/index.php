@@ -1313,9 +1313,10 @@ try
 		{
 			$sAlternateStylesheet = "$sCode";
 		}
-		$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]public";
+		$page_file_temp = dirname($_SERVER["PHP_SELF"]);
+			$actual_link = "http://$_SERVER[HTTP_HOST]".$page_file_temp.'/public';
 
-		header('Location: '.$actual_link); 
+			header('Location: '.$actual_link); 
 	
 		// $oP = new PortalWebPage(Dict::S('Portal:Title'), $sAlternateStylesheet);
 	
