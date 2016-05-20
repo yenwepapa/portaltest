@@ -111,10 +111,10 @@
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 <?php 
-                    Session::put('contactperson_id',19);
-                    $customer_data=DB::table('view_contact')->where('id',Session::get('contactperson_id'))->first();
+                    $customer_id=$_SESSION['customer_id'];
+                    $customer_data=DB::table('contact')->where('id',$customer_id)->first();
                 ?>
-                  <img src="images/img.jpg" alt="">Welcome {{$customer_data->name}}, from {{$customer_data->org_name}}
+                  <img src="images/img.jpg" alt="">Welcome {{$customer_data->name}}
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu pull-right">

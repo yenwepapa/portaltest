@@ -38,6 +38,8 @@
     <body>
         <div class="container">
             <div class="content">
+                <?php session_start();
+                var_dump($_SESSION); ?>
                 <div class="title">Laravel 5</div>
             </div>
         </div>

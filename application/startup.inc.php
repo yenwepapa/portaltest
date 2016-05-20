@@ -26,7 +26,7 @@
 
 require_once(APPROOT.'/core/cmdbobject.class.inc.php');
 require_once(APPROOT.'/application/utils.inc.php');
-session_name('itop-'.md5(APPROOT));
+// session_name('itop-'.md5(APPROOT));
 session_start();
 if (isset($_REQUEST['switch_env']))
 {

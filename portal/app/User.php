@@ -23,4 +23,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function check_login(){
+        // var_dump(base_path()."\index.php");die();
+        require_once base_path()."\index.php";
+    }
 }

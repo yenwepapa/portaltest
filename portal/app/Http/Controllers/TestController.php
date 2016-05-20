@@ -12,6 +12,8 @@ use App\Http\Requests\TestDataRequest;
 
 use Session;
 
+
+
 class TestController extends Controller
 {
     public function index(){
@@ -48,7 +50,7 @@ class TestController extends Controller
 		$test_data->address=$request->address;
 		$test_data->introduction=$request->introduction;
 		$test_data->save();
-        Session::flash('message', 'Successfully created test data!');
+        Session::flash('message', 'Successfully edited test data!');
         return redirect('/test_data');
 
     }

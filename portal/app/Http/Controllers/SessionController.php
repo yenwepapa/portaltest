@@ -10,6 +10,10 @@ use Session;
 
 use DB;
 
+use URL;
+
+use Redirect;
+
 class SessionController extends Controller
 {
     public function index(){

@@ -1290,15 +1290,13 @@ try
 	require_once(APPROOT.'/application/portalwebpage.class.inc.php');
 	$oAppContext = new ApplicationContext();
 	$sOperation = utils::ReadParam('operation', '');
-	$_SESSION['customer_id']="";
 
 	require_once(APPROOT.'/application/loginwebpage.class.inc.php');
 	LoginWebPage::DoLogin(false /* bMustBeAdmin */, true /* IsAllowedToPortalUsers */); // Check user rights and prompt if needed
 
-   	ApplicationContext::SetUrlMakerClass('MyPortalURLMaker');
+   ApplicationContext::SetUrlMakerClass('MyPortalURLMaker');
 
 	$aClasses = explode(',', MetaModel::GetConfig()->Get('portal_tickets'));
-
 	$sMainClass = trim(reset($aClasses));
 	if (!class_exists($sMainClass))
 	{
@@ -1308,7 +1306,7 @@ try
 	else
 	{
 		$iContactId = UserRights::GetContactId();
-		$_SESSION['customer_id']=$iContactId;
+		$_SESSION['color']='hi kid kid';
 
 		$oUserOrg = GetUserOrg();
 	
@@ -1391,75 +1389,75 @@ try
 	}
 	// $oP->output();
 }
-catch(CoreException $e)
-{
-	require_once(APPROOT.'/setup/setuppage.class.inc.php');
-	$oP = new SetupPage(Dict::S('UI:PageTitle:FatalError'));
-	$oP->add("<h1>".Dict::S('UI:FatalErrorMessage')."</h1>\n");	
-	$oP->error(Dict::Format('UI:Error_Details', $e->getHtmlDesc()));	
-	//$oP->p($e->getTraceAsString());	
-	$oP->output();
+// catch(CoreException $e)
+// {
+// 	require_once(APPROOT.'/setup/setuppage.class.inc.php');
+// 	$oP = new SetupPage(Dict::S('UI:PageTitle:FatalError'));
+// 	$oP->add("<h1>".Dict::S('UI:FatalErrorMessage')."</h1>\n");	
+// 	$oP->error(Dict::Format('UI:Error_Details', $e->getHtmlDesc()));	
+// 	//$oP->p($e->getTraceAsString());	
+// 	$oP->output();
 
-	if (MetaModel::IsLogEnabledIssue())
-	{
-		if (MetaModel::IsValidClass('EventIssue'))
-		{
-			try
-			{
-				$oLog = new EventIssue();
+// 	if (MetaModel::IsLogEnabledIssue())
+// 	{
+// 		if (MetaModel::IsValidClass('EventIssue'))
+// 		{
+// 			try
+// 			{
+// 				$oLog = new EventIssue();
 	
-				$oLog->Set('message', $e->getMessage());
-				$oLog->Set('userinfo', '');
-				$oLog->Set('issue', $e->GetIssue());
-				$oLog->Set('impact', 'Page could not be displayed');
-				$oLog->Set('callstack', $e->getTrace());
-				$oLog->Set('data', $e->getContextData());
-				$oLog->DBInsertNoReload();
-			}
-			catch(Exception $e)
-			{
-				IssueLog::Error("Failed to log issue into the DB");
-			}
-		}
+// 				$oLog->Set('message', $e->getMessage());
+// 				$oLog->Set('userinfo', '');
+// 				$oLog->Set('issue', $e->GetIssue());
+// 				$oLog->Set('impact', 'Page could not be displayed');
+// 				$oLog->Set('callstack', $e->getTrace());
+// 				$oLog->Set('data', $e->getContextData());
+// 				$oLog->DBInsertNoReload();
+// 			}
+// 			catch(Exception $e)
+// 			{
+// 				IssueLog::Error("Failed to log issue into the DB");
+// 			}
+// 		}
 
-		IssueLog::Error($e->getMessage());
-	}
+// 		IssueLog::Error($e->getMessage());
+// 	}
 
-	// For debugging only
-	//throw $e;
-}
-catch(Exception $e)
-{
-	require_once(APPROOT.'/setup/setuppage.class.inc.php');
-	$oP = new SetupPage(Dict::S('UI:PageTitle:FatalError'));
-	$oP->add("<h1>".Dict::S('UI:FatalErrorMessage')."</h1>\n");	
-	$oP->error(Dict::Format('UI:Error_Details', $e->getMessage()));	
-	//$oP->p($e->getTraceAsString());	
-	$oP->output();
+// 	// For debugging only
+// 	//throw $e;
+// }
+// catch(Exception $e)
+// {
+// 	require_once(APPROOT.'/setup/setuppage.class.inc.php');
+// 	$oP = new SetupPage(Dict::S('UI:PageTitle:FatalError'));
+// 	$oP->add("<h1>".Dict::S('UI:FatalErrorMessage')."</h1>\n");	
+// 	$oP->error(Dict::Format('UI:Error_Details', $e->getMessage()));	
+// 	//$oP->p($e->getTraceAsString());	
+// 	$oP->output();
 
-	if (MetaModel::IsLogEnabledIssue())
-	{
-		if (MetaModel::IsValidClass('EventIssue'))
-		{
-			try
-			{
-				$oLog = new EventIssue();
+// 	if (MetaModel::IsLogEnabledIssue())
+// 	{
+// 		if (MetaModel::IsValidClass('EventIssue'))
+// 		{
+// 			try
+// 			{
+// 				$oLog = new EventIssue();
 	
-				$oLog->Set('message', $e->getMessage());
-				$oLog->Set('userinfo', '');
-				$oLog->Set('issue', 'PHP Exception');
-				$oLog->Set('impact', 'Page could not be displayed');
-				$oLog->Set('callstack', $e->getTrace());
-				$oLog->Set('data', array());
-				$oLog->DBInsertNoReload();
-			}
-			catch(Exception $e)
-			{
-				IssueLog::Error("Failed to log issue into the DB");
-			}
-		}
+// 				$oLog->Set('message', $e->getMessage());
+// 				$oLog->Set('userinfo', '');
+// 				$oLog->Set('issue', 'PHP Exception');
+// 				$oLog->Set('impact', 'Page could not be displayed');
+// 				$oLog->Set('callstack', $e->getTrace());
+// 				$oLog->Set('data', array());
+// 				$oLog->DBInsertNoReload();
+// 			}
+// 			catch(Exception $e)
+// 			{
+// 				IssueLog::Error("Failed to log issue into the DB");
+// 			}
+// 		}
 
-		IssueLog::Error($e->getMessage());
-	}
-}
+// 		IssueLog::Error($e->getMessage());
+// 	}
+// }
 ?>
