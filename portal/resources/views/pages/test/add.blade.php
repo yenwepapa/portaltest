@@ -26,6 +26,7 @@
                   <br />
                   {!!Form::open(array('url'=>'/test_data', 'class'=>'form-horizontal form-label-left'))!!}
 
+
                     <div class="form-group @if ($errors->has('name')) has-error @endif">
                       <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name
                       </label>

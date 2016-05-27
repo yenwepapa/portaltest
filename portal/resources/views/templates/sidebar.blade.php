@@ -13,16 +13,16 @@
                     </li> -->
                   </ul>
                 </li>
-               <!--  <li><a><i class="fa fa-edit"></i> Request Management <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-edit"></i> Booking Management <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="{{URL::to('create_new_request')}}">Open new Requests</a>
+                    <li><a href="{{URL::to('/day_booking')}}">Day View</a>
                     </li>
-                    <li><a href="{{URL::to('show_open_request')}}">Show Open Requests</a>
+                    <li><a href="{{URL::to('/booking')}}">Month View</a>
                     </li>
-                    <li><a href="{{URL::to('show_close_request')}}">Show Close Requests</a>
-                    </li>
+                    <!-- <li><a href="{{URL::to('/userrequest/show_close_request')}}">Show Close Requests</a>
+                    </li> -->
                   </ul>
-                </li> -->
+                </li>
                 <li><a><i class="fa fa-desktop"></i> Sample From <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li><a href="{{URL::to('test_data')}}">Test Data</a>

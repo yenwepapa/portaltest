@@ -1307,10 +1307,13 @@ try
 	}
 	else
 	{
+
+		$oUserOrg = GetUserOrg();
+		$_SESSION['org_id']=$oUserOrg->GetKey();
 		$iContactId = UserRights::GetContactId();
 		$_SESSION['customer_id']=$iContactId;
 
-		$oUserOrg = GetUserOrg();
+		
 	
 		// $sCode = $oUserOrg->Get('code');
 		// $sAlternateStylesheet = '';

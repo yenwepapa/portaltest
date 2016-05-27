@@ -7,6 +7,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta id="token" name="token" content="{{csrf_token()}}">
 
   <title>STT-GDC Portal | </title>
 
@@ -112,7 +113,7 @@
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 <?php 
                     $customer_id=$_SESSION['customer_id'];
-                    $customer_data=DB::table('contact')->where('id',$customer_id)->first();
+                    $customer_data=DB::table('view_contact')->where('id',$customer_id)->first();
                 ?>
                   <img src="images/img.jpg" alt="">Welcome {{$customer_data->name}}
                   <span class=" fa fa-angle-down"></span>

@@ -14,6 +14,11 @@ Route::group(['middleware'=>'logincheck'],function(){
 	Route::get('/dashboard','SessionController@index');
 	Route::get('/','SessionController@index');
 	Route::resource('/test_data','TestController');
+	// Route::post('/userrequest/get_service_sub_cat','UserRequestController@get_service_sub_cat');
+	// Route::resource('/userrequest','UserRequestController');
+	Route::get('/day_booking','BookingController@day_booking');
+	Route::resource('booking','BookingController');
+
 });
 // Route::get('/',[
 //    'middleware' => 'logincheck',

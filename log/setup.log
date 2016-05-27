@@ -3186,3 +3186,5 @@ Ok.
 2016-04-28 10:02:54 - Error - Error: Error: the current user is not associated with a Contact/Person. Please contact your administrator..
 2016-04-28 10:03:30 - Error - Error: Error: the current user is not associated with a Contact/Person. Please contact your administrator..
 2016-05-13 09:51:46 - Error - Error: Error: the current user is not associated with a Contact/Person. Please contact your administrator..
+2016-05-27 03:32:52 - Error - Error: Could not connect to the DB server: host = localhost, user = root, mysql_error = 2002, mysql_errno = No connection could be made because the target machine actively refused it.
+.
